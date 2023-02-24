@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+    <title>Edit player</title>
+  </head>
+  <body>
+    <%-include('./patials/header')%>
+    <div class="container pt-3">
+      <form method="post">
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label class="label">Name</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <div class="control">
+                <input
+                  class="input is-info"
+                  name="name"
+                  type="text"
+                  value="<%= player.name %>"
+                  required
+                />
+              </div>
+              
+            </div>
+          </div>
+        </div>
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label class="label">Club</label>
+          </div>
+          <div class="field-body">
+            <div class="field is-narrow">
+              <div class="control">
+                <div class="select is-fullwidth">
+                  <select name="club" required>
+                    <%for (let club of clubList){ %>
+                        <option value="<%= club.name %>"
+                            <%=JSON.stringify(club.name)===JSON.stringify(player.club) ? 'selected' : '' %>><%=
+                                club.name %>
+                        </option>
+                        <% } %>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label class="label">Image</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <div class="control">
+                <input
+                  class="input is-info"
+                  name="image"
+                  type="text"
+                  value="<%= player.image %>"
+                  required
+                />
+              </div>
+              
+            </div>
+          </div>
+        </div>
+        <!-- Pos -->
+        <div class="field is-horizontal">
+        <div class="field-label is-normal">
+          <label class="label">Position</label>
+        </div>
+        <div class="field-body">
+          <div class="field is-narrow">
+            <div class="control">
+              <div class="select is-fullwidth">
+                <select name="position">
+                  <%for (let pos of postitionList){ %>
+                      <option value="<%= pos.name %>"
+                          <%=JSON.stringify(pos.name)===JSON.stringify(player.position) ? 'selected' : '' %>><%=
+                              pos.name %>
+                      </option>
+                      <% } %>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <!-- Goals -->
+      <div class="field is-horizontal">
+        <div class="field-label is-normal">
+          <label class="label">Goals</label>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <div class="control">
+              <input
+                class="input is-info"
+                name="goals"
+                type="number"
+                placeholder="Number of goals"
+                required
+                value="<%= player.goals%>"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Is captain -->
+      <div class="field is-horizontal">
+        <div class="field-label is-normal">
+          <label class="label">Is Captain</label>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <div class="control pt-2">
+              <label class="checkbox">
+                <input type="checkbox" name="isCaptain" value="true" <%= player.isCaptain ? 'checked' : '' %>>
+                                                Yes, I am a captain
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+        <div class="field is-horizontal">
+          <div class="field-label is-normal"></div>
+          <div class="field-body">
+            <div class="field">
+              <div class="control">
+                <button class="button is-primary" type="submit">Save</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

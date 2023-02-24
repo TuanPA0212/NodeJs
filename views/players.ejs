@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+    <title>Player</title>
+  </head>
+  <body> 
+    <%- include('./patials/header') %>
+    </div>
+    <div class="container is-fluid pt-3">
+      <div class="columns ">
+        <div class="column">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Club</th>
+                <th>Position</th>
+                <th>Goals</th>
+                <th>Captain</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+               <% players.forEach(function(player){ %>
+                <tr>
+                  <td><figure class="image is-64x64">
+                    <img style="width: 100%; height: 100%;" src=<%= player.image %> >
+                  </figure>
+                </td>
+                  <td> <%= player.name %> </td>
+                  <td> <%= player.club %> </td>
+                  <td> <%= player.position %> </td>
+                  <td> <%= player.goals %> </td>
+                  <td> <%= player.isCaptain === true ? 'Captain' : "" %> </td>
+                  <td>
+                    <div class="buttons are-small">
+                        <a href="./players/edit/<%=player.id %>"><button class="button is-warning is-light mr-1">Edit</button></a>
+                        <a href="./players/delete/<%=player.id %>"><button onclick="return confirm('Are you sure ???')" class="button is-danger is-light">Delete</button></a>
+
+                    </div></a>
+                </td>
+                </tr>
+                <% })%>
+                </tbody>
+              </table>
+        </div>
+        <div class="column">
+          <form method="post">
+            <div class="field is-horizontal">
+              <div class="field-label is-normal">
+                <label class="label">Name</label>
+              </div>
+              <div class="field-body">
+                <div class="field">
+                  <div class="control">
+                    <input
+                      class="input is-info"
+                      name="name"
+                      type="text"
+                      placeholder="e.g. Messi"
+                      required
+                    ></input>
+                    
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="field is-horizontal">
+              <div class="field-label is-normal">
+                <label class="label">Club</label>
+              </div>
+              <div class="field-body">
+                <div class="field is-narrow">
+                  <div class="control">
+                    <div class="select is-fullwidth">
+                      	<select name="club">
+                          <%for (let club of clubList){ %>
+                        	  <option value="<%= club.name %>"><%= club.name %></option> 
+                        	<% } %>
+                        </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+      
+            <div class="field is-horizontal">
+              <div class="field-label is-normal">
+                <label class="label">Image</label>
+              </div>
+              <div class="field-body">
+                <div class="field">
+                  <div class="control">
+                    <input
+                      class="input is-info"
+                      name="image"
+                      type="text"
+                      placeholder="URL of image"
+                      required
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- position -->
+            <div class="field is-horizontal">
+              <div class="field-label is-normal">
+                <label class="label">Position</label>
+              </div>
+              <div class="field-body">
+                <div class="field is-narrow">
+                  <div class="control">
+                    <div class="select is-fullwidth">
+                      	<select name="position">
+                          <%for (let pos of postitionList){ %>
+                        	  <option value="<%= pos.name %>"><%= pos.name %></option> 
+                        	<% } %>
+                        </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Goal -->
+            <div class="field is-horizontal">
+              <div class="field-label is-normal">
+                <label class="label">Goals</label>
+              </div>
+              <div class="field-body">
+                <div class="field">
+                  <div class="control">
+                    <input
+                      class="input is-info"
+                      name="goals"
+                      type="number"
+                      placeholder="Number of goals"
+                      required
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Is captain -->
+            <div class="field is-horizontal">
+              <div class="field-label is-normal">
+                <label class="label">Is Captain</label>
+              </div>
+              <div class="field-body">
+                <div class="field">
+                  <div class="control pt-2">
+                    <label class="checkbox">
+                      <input type="checkbox" name="isCaptain" value="true">
+                      Yes, I am a captain
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="field is-horizontal">
+              <div class="field-label is-normal">
+              </div>
+              <div class="field-body">
+                <div class="field">
+                  <div class="control">
+                    <button class="button is-primary" type="submit">Create</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+    </div>
+    	
+      
+  </body>
+</html>
