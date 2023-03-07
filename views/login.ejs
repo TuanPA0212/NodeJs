@@ -12,6 +12,16 @@
   </head>
   <body>
     <%- include('./patials/header') %>
+    <% if(success_msg != ''){ %>
+      <%= success_msg %>
+    <% } %>
+    <% if(error_msg != ''){ %>
+    <%= error_msg %>
+    <% } %>
+
+    <% if(error != ''){ %>
+    <%= error %> 
+    <% } %>  
     <div class="card">
       <div class="card-content">
         <div class="container is-fluid pt-3 pl-6 pr-6">
