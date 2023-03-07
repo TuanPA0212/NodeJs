@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+  </head>
+  <body>
+    <%- include('./patials/header') %>
+    <div class="card">
+      <div class="card-content">
+        <div class="container is-fluid pt-3 pl-6 pr-6">
+          <form method="post">
+            <div class="field">
+              <label class="label">Username</label>
+              <div class="control">
+                <input
+                  class="input"
+                  name="username"
+                  type="text"
+                  placeholder="Type your username...."
+                />
+              </div>
+            </div>
+            <div class="field">
+              <label class="label">Password</label>
+              <div class="control">
+                <input
+                  class="input is-success"
+                  name="password"
+                  type="password"
+                />
+              </div>
+            </div>
+            <div class="field is-grouped">
+              <div class="control">
+                <button class="button is-link">Login</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -11,7 +11,7 @@ const url = "mongodb://localhost:27017/qatar2022";
 const connect = mongoose.connect(url);
 
 var indexRouter = require("./routes/index");
-var usersRouter = require("./routes/users");
+var userRouter = require("./routes/userRouter");
 const playerRouter = require("./routes/playerRouter");
 const nationsRouter = require("./routes/nationRouter");
 
@@ -36,7 +36,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
-app.use("/users", usersRouter);
+app.use("/users", userRouter);
 app.use("/players", playerRouter);
 app.use("/nations", nationsRouter);
 
